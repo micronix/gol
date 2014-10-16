@@ -1,0 +1,37 @@
+<html>
+<head>
+<script src="bower_components/angularjs/angular.js"></script>
+<script src="life.js"></script>
+<style>
+table {
+  border-collapse: collapse;
+}
+
+table tr td {
+  border: 1px solid black;
+  width: 15px;
+  height: 10px;
+}
+
+.on {
+  background-color: #87CEFA;
+}
+
+.off {
+  background-color: white;
+}
+</style>
+</head>
+<body ng-app="lifeApp" ng-controller="lifeCtrl">
+<table class="grid">
+  <tr ng-repeat="row in grid track by $index">
+    <td ng-repeat="cell in row track by $index" ng-click="toggle($parent.$index,$index)" ng-class="{on: cell, off: !cell}">&nbsp;</td>
+  </tr>
+</table>
+<button ng-click="step()">STEP</button>
+<button ng-click="run()" ng-disable="running">RUN</button>
+<button ng-click="stop()" ng-disable="!running">STOP</button>
+<button ng-click="random()">RANDOM</button>
+
+</body>
+</html>
